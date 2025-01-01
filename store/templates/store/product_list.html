@@ -1,0 +1,17 @@
+{% extends 'store/base.html' %}
+{% block content %}
+<h1>Products</h1>
+<div>
+    {% for product in products %}
+        <div>
+            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+            <h2>{{ product.name }}</h2>
+            <p>${{ product.price }}</p>
+            <p>{% if product.is_in_stock %} In Stock {% else %} Out of Stock {% endif %}</p>
+            {% if product.is_in_stock %}
+                <a href="{% url 'checkout' product.id %}">Order</a>
+            {% endif %}
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

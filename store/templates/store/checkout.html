@@ -1,0 +1,10 @@
+{% extends 'store/base.html' %}
+{% block content %}
+<h1>Checkout</h1>
+<form method="POST">{% csrf_token %}
+    <p>{{ product.name }} - ${{ product.price }}</p>
+    <label>Quantity:</label>
+    <input type="number" name="quantity" min="1" max="{{ product.quantity }}">
+    <button type="submit">Order</button>
+</form>
+{% endblock %}
